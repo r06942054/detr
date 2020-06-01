@@ -32,5 +32,7 @@ unzip image_info_test2017.zip
 cd /home/omnieyes/renjie/GitHub/detr/
 conda activate detr
 
-python -m torch.distributed.launch --nproc_per_node=1 --use_env main.py --coco_path /home/omnieyes/coco 
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --nproc_per_node=1 --use_env main.py --coco_path /home/omnieyes/coco
 python main.py --batch_size 2 --no_aux_loss --eval --resume https://dl.fbaipublicfiles.com/detr/detr-r50-e632da11.pth --coco_path /home/omnieyes/coco
+
+CUDA_VISIBLE_DEVICES=1 python -m torch.distributed.launch --nproc_per_node=1 --use_env main.py --coco_path /home/omnieyes/renjie/GitHub/CenterNet/data/omnieyes --dataset_file omni --num_queries 30 --batch_size 4 --output_dir /home/omnieyes/renjie/GitHub/detr/resnet18_raw/ --backbone resnet18
